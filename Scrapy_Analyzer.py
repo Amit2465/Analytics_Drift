@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 import plotly.express as px
 import base64
 import time
@@ -186,14 +185,14 @@ st.markdown('<hr>', unsafe_allow_html=True)
 # Total number of posts in each section
 st.info('Total number of posts in each section')
 st.bar_chart(section_counts, height=300) 
-st.markdown('</.br>', unsafe_allow_html=True)
+st.markdown('</br>', unsafe_allow_html=True)
 
 
 # Number of articles by author
+st.info('Number of Articles by Author')
 author_counts = df['Author Name'].value_counts().reset_index()
 author_counts.columns = ['Author Name', 'Count'] 
-fig = px.bar(author_counts, x='Author Name', y='Count',
-             title='Number of Articles by Author')
+fig = px.bar(author_counts, x='Author Name', y='Count')
 fig.update_layout(xaxis_title='Author Name', yaxis_title='Number of Articles')
 st.plotly_chart(fig)
 st.markdown('<br>', unsafe_allow_html=True)
